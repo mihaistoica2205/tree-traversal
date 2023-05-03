@@ -1,6 +1,5 @@
 from node import Node
 
-
 class Tree:
     """ Tree class for binary tree """
 
@@ -54,6 +53,15 @@ class Tree:
             return None
 
     def _find(self, data, node):
+        """Method for finding node with given data in the tree
+
+        Args:
+            data (int): data to find
+            node (Node): node with data
+
+        Returns:
+            Node: node with data
+        """
         if data == node.data:
             return node
         elif (data < node.data and node.left is not None):
@@ -62,27 +70,52 @@ class Tree:
             return self._find(data, node.right)
 
     def deleteTree(self):
-        # TODO 1
+        """ Method for deleting the tree """
         self.root = None
 
     def printTree(self):
-        # TODO 1
+        """ Method for printing the tree """
         if self.root is not None:
             self._printInorderTree(self.root)
 
     def _printInorderTree(self, node):
-        # TODO 1
+        """ Method for printing the tree with order: Inorder
+    
+        Args:
+            node (Node): node to start
+        
+        Returns:
+            None
+        """
         if node is not None:
             self._printInorderTree(node.left)
             print(str(node.data) + ' ')
             self._printInorderTree(node.right)
 
     def _printPreorderTree(self, node):
-        # TODO 2
-        pass
+        """ Method for printing the tree with order: Preorder
+        
+        Args:
+            node (Node): node to start
+        
+        Returns:
+            None
+        """
+        if node is not None:
+            print(str(node.data) + ' ')
+            self._printPreorderTree(node.left)
+            self._printPreorderTree(node.right)
 
     def _printPostorderTree(self, node):
-        # TODO 2
-        pass
-
-
+        """Method for printing the tree with order: Postorder
+        
+        Args:
+            node (Node): node to start
+        
+        Returns:
+            None
+        """
+        if node is not None:
+            self._printPostorderTree(node.left)
+            self._printPostorderTree(node.right)
+            print(str(node.data) + ' ')
